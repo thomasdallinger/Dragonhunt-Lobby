@@ -1,0 +1,838 @@
+uncommon:
+  # Weapons
+  0:
+    material: GOLDEN_SWORD
+    minAmount: 1
+    maxAmount: 1
+  1:
+    material: GOLDEN_SWORD
+    enchantments:
+      SHARPNESS: 1
+    minAmount: 1
+    maxAmount: 1
+  2:
+    material: GOLDEN_SWORD
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  3:
+    material: GOLDEN_AXE
+    minAmount: 1
+    maxAmount: 1
+  4:
+    material: GOLDEN_AXE
+    enchantments:
+      SHARPNESS: 1
+    minAmount: 1
+    maxAmount: 1
+  5:
+    material: GOLDEN_AXE
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  6:
+    material: BOW
+    enchantments:
+      POWER: 1
+    minAmount: 1
+    maxAmount: 1
+  7:
+    material: CROSSBOW
+    minAmount: 1
+    maxAmount: 1
+  8:
+    material: CROSSBOW
+    enchantments:
+      QUICK_CHARGE: 1
+    minAmount: 1
+    maxAmount: 1
+  # Armor
+  9:
+    material: GOLDEN_HELMET
+    minAmount: 1
+    maxAmount: 1
+  10:
+    material: GOLDEN_HELMET
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  11:
+    material: GOLDEN_HELMET
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  12:
+    material: GOLDEN_CHESTPLATE
+    minAmount: 1
+    maxAmount: 1
+  13:
+    material: GOLDEN_CHESTPLATE
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  14:
+    material: GOLDEN_CHESTPLATE
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  15:
+    material: GOLDEN_LEGGINGS
+    minAmount: 1
+    maxAmount: 1
+  16:
+    material: GOLDEN_LEGGINGS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  17:
+    material: GOLDEN_LEGGINGS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  18:
+    material: GOLDEN_BOOTS
+    minAmount: 1
+    maxAmount: 1
+  19:
+    material: GOLDEN_BOOTS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  20:
+    material: GOLDEN_BOOTS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  # Supplies
+  21:
+    material: ENCHANTED_BOOK
+    enchantments:
+      UNBREAKING: 1
+    minAmount: 1
+    maxAmount: 1
+  22:
+    material: ENCHANTED_BOOK
+    enchantments:
+      SHARPNESS: 1
+    minAmount: 1
+    maxAmount: 1
+  23:
+    material: ENCHANTED_BOOK
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  24:
+    material: GOLDEN_APPLE
+    minAmount: 1
+    maxAmount: 2
+  25:
+    material: TIPPED_ARROW
+    effects:
+      POISON: 0
+    duration: 100
+    color: 0x4E9331
+    minAmount: 12
+    maxAmount: 24
+  26:
+    material: TIPPED_ARROW
+    effects:
+      SLOW: 0
+    duration: 100
+    color: 0x5A6C81
+    minAmount: 12
+    maxAmount: 24
+  27:
+    material: STICK
+    enchantments:
+      KNOCKBACK: 2
+    minAmount: 1
+    maxAmount: 1
+rare:
+  # Weapons
+  0:
+    material: STONE_SWORD
+    minAmount: 1
+    maxAmount: 1
+  1:
+    material: STONE_SWORD
+    enchantments:
+      SHARPNESS: 1
+    minAmount: 1
+    maxAmount: 1
+  2:
+    material: STONE_SWORD
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  3:
+    material: STONE_AXE
+    minAmount: 1
+    maxAmount: 1
+  4:
+    material: STONE_AXE
+    enchantments:
+      SHARPNESS: 1
+    minAmount: 1
+    maxAmount: 1
+  5:
+    material: STONE_AXE
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  6:
+    material: BOW
+    enchantments:
+      POWER: 2
+    minAmount: 1
+    maxAmount: 1
+  7:
+    material: CROSSBOW
+    enchantments:
+      QUICK_CHARGE: 1
+    minAmount: 1
+    maxAmount: 1
+  8:
+    material: CROSSBOW
+    enchantments:
+      QUICK_CHARGE: 2
+    minAmount: 1
+    maxAmount: 1
+  # Armor
+  9:
+    material: CHAINMAIL_HELMET
+    minAmount: 1
+    maxAmount: 1
+  10:
+    material: CHAINMAIL_HELMET
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  11:
+    material: CHAINMAIL_HELMET
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  12:
+    material: CHAINMAIL_CHESTPLATE
+    minAmount: 1
+    maxAmount: 1
+  13:
+    material: CHAINMAIL_CHESTPLATE
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  14:
+    material: CHAINMAIL_CHESTPLATE
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  15:
+    material: CHAINMAIL_LEGGINGS
+    minAmount: 1
+    maxAmount: 1
+  16:
+    material: CHAINMAIL_LEGGINGS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  17:
+    material: CHAINMAIL_LEGGINGS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  18:
+    material: CHAINMAIL_BOOTS
+    minAmount: 1
+    maxAmount: 1
+  19:
+    material: CHAINMAIL_BOOTS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  20:
+    material: CHAINMAIL_BOOTS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  # Supplies
+  21:
+    material: ENCHANTED_BOOK
+    enchantments:
+      UNBREAKING: 2
+    minAmount: 1
+    maxAmount: 1
+  22:
+    material: ENCHANTED_BOOK
+    enchantments:
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  23:
+    material: ENCHANTED_BOOK
+    enchantments:
+      PUNCH: 1
+    minAmount: 1
+    maxAmount: 1
+  24:
+    material: GOLDEN_APPLE
+    minAmount: 2
+    maxAmount: 3
+  25:
+    material: TIPPED_ARROW
+    effects:
+      WEAKNESS: 0
+    duration: 100
+    color: 0x484D48
+    minAmount: 12
+    maxAmount: 24
+  26:
+    material: TIPPED_ARROW
+    effects:
+      LEVITATION: 0
+    duration: 100
+    color: 0xCEFFFF
+    minAmount: 12
+    maxAmount: 24
+  27:
+    material: STICK
+    enchantments:
+      KNOCKBACK: 3
+    minAmount: 1
+    maxAmount: 1
+epic:
+  # Weapons
+  0:
+    material: IRON_SWORD
+    minAmount: 1
+    maxAmount: 1
+  1:
+    material: IRON_SWORD
+    enchantments:
+      SHARPNESS: 1
+    minAmount: 1
+    maxAmount: 1
+  2:
+    material: IRON_SWORD
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  3:
+    material: IRON_AXE
+    minAmount: 1
+    maxAmount: 1
+  4:
+    material: IRON_AXE
+    enchantments:
+      SHARPNESS: 1
+    minAmount: 1
+    maxAmount: 1
+  5:
+    material: IRON_AXE
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  6:
+    material: BOW
+    enchantments:
+      POWER: 2
+      PUNCH: 1
+    minAmount: 1
+    maxAmount: 1
+  7:
+    material: CROSSBOW
+    enchantments:
+      QUICK_CHARGE: 2
+    minAmount: 1
+    maxAmount: 1
+  8:
+    material: CROSSBOW
+    enchantments:
+      MULTISHOT: 1
+    minAmount: 1
+    maxAmount: 1
+  # Armor
+  9:
+    material: IRON_HELMET
+    minAmount: 1
+    maxAmount: 1
+  10:
+    material: IRON_HELMET
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  11:
+    material: IRON_HELMET
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  12:
+    material: IRON_CHESTPLATE
+    minAmount: 1
+    maxAmount: 1
+  13:
+    material: IRON_CHESTPLATE
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  14:
+    material: IRON_CHESTPLATE
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  15:
+    material: IRON_LEGGINGS
+    minAmount: 1
+    maxAmount: 1
+  16:
+    material: IRON_LEGGINGS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  17:
+    material: IRON_LEGGINGS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  18:
+    material: IRON_BOOTS
+    minAmount: 1
+    maxAmount: 1
+  19:
+    material: IRON_BOOTS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  20:
+    material: IRON_BOOTS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  # Supplies
+  21:
+    material: ENCHANTED_BOOK
+    enchantments:
+      FIRE_ASPECT: 1
+    minAmount: 1
+    maxAmount: 1
+  22:
+    material: ENCHANTED_BOOK
+    enchantments:
+      FLAME: 1
+    minAmount: 1
+    maxAmount: 1
+  23:
+    material: ENCHANTED_BOOK
+    enchantments:
+      MULTISHOT: 1
+    minAmount: 1
+    maxAmount: 1
+  24:
+    material: GOLDEN_APPLE
+    minAmount: 3
+    maxAmount: 5
+  25:
+    material: TIPPED_ARROW
+    effects:
+      POISON: 1
+    duration: 100
+    color: 0x4E9331
+    minAmount: 12
+    maxAmount: 24
+  26:
+    material: TIPPED_ARROW
+    effects:
+      BLINDNESS: 0
+    duration: 100
+    color: 0x1F1F23
+    minAmount: 12
+    maxAmount: 24
+  27:
+    material: SPECTRAL_ARROW
+    minAmount: 16
+    maxAmount: 32
+exotic:
+  # Weapons
+  0:
+    material: DIAMOND_SWORD
+    minAmount: 1
+    maxAmount: 1
+  1:
+    material: DIAMOND_SWORD
+    enchantments:
+      SHARPNESS: 1
+      FIRE_ASPECT: 1
+    minAmount: 1
+    maxAmount: 1
+  2:
+    material: DIAMOND_SWORD
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  3:
+    material: DIAMOND_AXE
+    minAmount: 1
+    maxAmount: 1
+  4:
+    material: DIAMOND_AXE
+    enchantments:
+      SHARPNESS: 1
+      FIRE_ASPECT: 1
+    minAmount: 1
+    maxAmount: 1
+  5:
+    material: DIAMOND_AXE
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  6:
+    material: BOW
+    enchantments:
+      POWER: 3
+      PUNCH: 1
+    minAmount: 1
+    maxAmount: 1
+  7:
+    material: BOW
+    enchantments:
+      POWER: 3
+      FLAME: 1
+    minAmount: 1
+    maxAmount: 1
+  8:
+    material: CROSSBOW
+    enchantments:
+      QUICK_CHARGE: 3
+      MULTISHOT: 1
+    minAmount: 1
+    maxAmount: 1
+  # Armor
+  9:
+    material: DIAMOND_HELMET
+    minAmount: 1
+    maxAmount: 1
+  10:
+    material: DIAMOND_HELMET
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  11:
+    material: DIAMOND_HELMET
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  12:
+    material: DIAMOND_CHESTPLATE
+    minAmount: 1
+    maxAmount: 1
+  13:
+    material: DIAMOND_CHESTPLATE
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  14:
+    material: DIAMOND_CHESTPLATE
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  15:
+    material: DIAMOND_LEGGINGS
+    minAmount: 1
+    maxAmount: 1
+  16:
+    material: DIAMOND_LEGGINGS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  17:
+    material: DIAMOND_LEGGINGS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  18:
+    material: DIAMOND_BOOTS
+    minAmount: 1
+    maxAmount: 1
+  19:
+    material: DIAMOND_BOOTS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  20:
+    material: DIAMOND_BOOTS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  # Supplies
+  21:
+    material: ENCHANTED_BOOK
+    enchantments:
+      SHARPNESS: 3
+    minAmount: 1
+    maxAmount: 1
+  22:
+    material: ENCHANTED_BOOK
+    enchantments:
+      POWER: 3
+    minAmount: 1
+    maxAmount: 1
+  23:
+    material: ENCHANTED_BOOK
+    enchantments:
+      PROTECTION: 3
+    minAmount: 1
+    maxAmount: 1
+  24:
+    material: GOLDEN_APPLE
+    minAmount: 3
+    maxAmount: 5
+  25:
+    material: ENCHANTED_GOLDEN_APPLE
+    minAmount: 1
+    maxAmount: 2
+  26:
+    material: TIPPED_ARROW
+    effects:
+      WEAKNESS: 1
+    duration: 100
+    color: 0x484D48
+    minAmount: 12
+    maxAmount: 24
+  27:
+    material: ENDER_PEARL
+    minAmount: 4
+    maxAmount: 8
+mythic:
+  # Weapons
+  0:
+    material: NETHERITE_SWORD
+    minAmount: 1
+    maxAmount: 1
+  1:
+    material: NETHERITE_SWORD
+    enchantments:
+      SHARPNESS: 1
+      FIRE_ASPECT: 1
+    minAmount: 1
+    maxAmount: 1
+  2:
+    material: NETHERITE_SWORD
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  3:
+    material: NETHERITE_AXE
+    minAmount: 1
+    maxAmount: 1
+  4:
+    material: NETHERITE_AXE
+    enchantments:
+      SHARPNESS: 1
+      FIRE_ASPECT: 1
+    minAmount: 1
+    maxAmount: 1
+  5:
+    material: NETHERITE_AXE
+    enchantments:
+      SHARPNESS: 2
+      KNOCKBACK: 1
+    minAmount: 1
+    maxAmount: 1
+  6:
+    material: BOW
+    enchantments:
+      POWER: 3
+      PUNCH: 2
+    minAmount: 1
+    maxAmount: 1
+  7:
+    material: BOW
+    enchantments:
+      POWER: 3
+      PUNCH: 2
+      FLAME: 1
+    minAmount: 1
+    maxAmount: 1
+  8:
+    material: BOW
+    enchantments:
+      POWER: 4
+      PUNCH: 1
+      FLAME: 1
+    minAmount: 1
+    maxAmount: 1
+  # Armor
+  9:
+    material: NETHERITE_HELMET
+    minAmount: 1
+    maxAmount: 1
+  10:
+    material: NETHERITE_HELMET
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  11:
+    material: NETHERITE_HELMET
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  12:
+    material: NETHERITE_CHESTPLATE
+    minAmount: 1
+    maxAmount: 1
+  13:
+    material: NETHERITE_CHESTPLATE
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  14:
+    material: NETHERITE_CHESTPLATE
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  15:
+    material: NETHERITE_LEGGINGS
+    minAmount: 1
+    maxAmount: 1
+  16:
+    material: NETHERITE_LEGGINGS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  17:
+    material: NETHERITE_LEGGINGS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  18:
+    material: NETHERITE_BOOTS
+    minAmount: 1
+    maxAmount: 1
+  19:
+    material: NETHERITE_BOOTS
+    enchantments:
+      PROTECTION: 1
+    minAmount: 1
+    maxAmount: 1
+  20:
+    material: NETHERITE_BOOTS
+    enchantments:
+      PROTECTION: 2
+      THORNS: 1
+    minAmount: 1
+    maxAmount: 1
+  # Supplies
+  21:
+    material: ENCHANTED_BOOK
+    enchantments:
+      SHARPNESS: 4
+    minAmount: 1
+    maxAmount: 1
+  22:
+    material: ENCHANTED_BOOK
+    enchantments:
+      POWER: 4
+    minAmount: 1
+    maxAmount: 1
+  23:
+    material: ENCHANTED_BOOK
+    enchantments:
+      PROTECTION: 4
+    minAmount: 1
+    maxAmount: 1
+  24:
+    material: GOLDEN_APPLE
+    minAmount: 4
+    maxAmount: 6
+  25:
+    material: ENCHANTED_GOLDEN_APPLE
+    minAmount: 2
+    maxAmount: 3
+  26:
+    material: TIPPED_ARROW
+    effects:
+      BLINDNESS: 1
+      WEAKNESS: 1
+    duration: 100
+    color: 0x000000
+    minAmount: 12
+    maxAmount: 24
+  27:
+    material: ENDER_PEARL
+    minAmount: 6
+    maxAmount: 12

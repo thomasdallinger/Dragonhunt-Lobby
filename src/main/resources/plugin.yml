@@ -1,0 +1,26 @@
+name: Lobby
+version: ${project.version}
+main: com.tharox.lobby.Main
+api-version: 1.18
+authors: [ Tharox ]
+description: Lobby-Plugin by Tharox
+
+commands:
+  date:
+    description: Shows the current date.
+  forcestart:
+    description: Force starts the game.
+  spawn:
+    description: Teleports the player back to spawn.
+  website:
+    description: Website link.
+  youtube:
+    description: Youtube link.
+  twitter:
+    description: Twitter link.
+  discord:
+    description: Discord link.
+  beacon:
+    description: Used to find beacons.
+  tier:
+    description: Displays the loot table for the specified tier.
