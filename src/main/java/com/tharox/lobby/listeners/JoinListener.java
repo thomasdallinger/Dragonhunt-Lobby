@@ -16,10 +16,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -79,7 +80,8 @@ public class JoinListener implements Listener {
                 return;
             }
 
-            query = "INSERT INTO players (uuid) VALUES ('" + player.getUniqueId() + "')";
+            query = "INSERT INTO players (uuid, name, first_joined) VALUES ('" + player.getUniqueId()
+                    + "', '" + player.getName() + "', '" + Date.valueOf(LocalDate.now()) + "')";
 
             stmt = con.createStatement();
             stmt.execute(query);
