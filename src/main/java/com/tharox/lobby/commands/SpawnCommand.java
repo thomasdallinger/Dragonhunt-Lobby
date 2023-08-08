@@ -17,7 +17,7 @@ public class SpawnCommand implements CommandExecutor {
         } else return false;
 
         player.teleport(Main.getSpawnLocation());
-        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+        player.playSound(player.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 1, 1);
 
         return true;
     }

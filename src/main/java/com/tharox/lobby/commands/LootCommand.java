@@ -78,6 +78,7 @@ public class LootCommand implements CommandExecutor {
         }
 
         player.openInventory(inventory);
+        player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
 
         return true;
     }

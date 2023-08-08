@@ -42,15 +42,16 @@ public class Scoreboard extends ScoreboardBuilder {
     @Override
     public void update(Player player) {
         // Penalty Points: 1 / 12 --> 12 = ban in this example
+        String season = "S1";
 
         if (DbValues.getSkyPvPKills(player, false) > 0) { // would be a division by 0
-            setScore("S0: "
+            setScore(season + ": "
                     + "☠ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, true) + " "
                     + ChatColor.WHITE + "✟ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, false) + " "
                     + ChatColor.GRAY + "(" + roundDecimalNumber(((double) DbValues.getSkyPvPKills(player, true)
                     / DbValues.getSkyPvPKills(player, false)), 2) + ")", 12);
         } else {
-            setScore("S0: "
+            setScore(season + ": "
                     + "☠ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, true) + " "
                     + ChatColor.WHITE + "✟ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, false) + " "
                     + ChatColor.GRAY + "(" + DbValues.getSkyPvPKills(player, true) + ")", 12);
