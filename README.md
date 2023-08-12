@@ -1,6 +1,6 @@
 # Dragonhunt-Lobby
 
-Change DH gamemode version in database "Games" table (when creating a new game with the insert statement).
+Change DH gamemode version, mode, elo_active and free_kit in GameState.
 
 New Season:
 - Reset SkyPvP Stats
