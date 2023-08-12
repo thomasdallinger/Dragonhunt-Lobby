@@ -21,6 +21,13 @@ public class GameState {
     public static final boolean eloActive = false;
     public static final String freeKit = "Demolitionist";
 
+    public static final int levelsOnKill = 4;
+    public static final int levelsOnLooting = 2;
+    public static final int levelsOnDisenchanting = 1;
+
+    public static ArrayList<Material> protectedItemMaterials =
+            (ArrayList<Material>) Arrays.asList(Material.CLOCK, Material.NETHER_STAR, Material.END_CRYSTAL);
+
     public static void giveItem(Player player, ItemStack item, String title, int index) {
         item.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
         ItemMeta meta = item.getItemMeta();

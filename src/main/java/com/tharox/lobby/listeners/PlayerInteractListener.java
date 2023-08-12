@@ -2,8 +2,8 @@ package com.tharox.lobby.listeners;
 
 import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.chat.Prefixes;
+import com.tharox.lobby.game.GameState;
 import com.tharox.lobby.kits.selection.KitInventory;
-import com.tharox.lobby.profiles.ProfileInventory;
 import com.tharox.lobby.queue.Queue;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -83,11 +83,13 @@ public class PlayerInteractListener implements Listener {
 
                 joinQueue(player);
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                return;
 
             } else if (itemName.contains(HexColor.YELLOW + "Purchase Kits")) {
                 event.setCancelled(true);
                 player.openInventory(new KitInventory(player).kits);
                 player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
+                return;
 
             } else if (itemName.contains(HexColor.YELLOW + "Profile")) {
                 event.setCancelled(true);
@@ -97,14 +99,30 @@ public class PlayerInteractListener implements Listener {
 
                 //player.openInventory(new ProfileInventory(player).menu);
                 //player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
+                return;
             }
         }
 
-        // Modifiy the functionality of the Fletching Table
+        // Modifiy the functionality of the Fletching Table and Magma Block
         if (equipmentSlot.equals(EquipmentSlot.HAND)
-                && (event.getAction() == Action.LEFT_CLICK_BLOCK|| event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-            if(event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.FLETCHING_TABLE) {
-                removeEnchantments(player.getInventory().getItemInMainHand());
+                && (event.getAction() == Action.LEFT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            ItemStack mainHandItem = player.getInventory().getItemInMainHand();
+
+            if (!GameState.protectedItemMaterials.contains(mainHandItem.getType())) {
+                return;
+            }
+
+            if (event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.FLETCHING_TABLE) {
+                removeEnchantments(mainHandItem);
+                player.sendMessage(HexColor.GREEN + "Item in Main Hand disenchanted.");
+                player.playSound(player.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                player.setLevel(player.getLevel() + GameState.levelsOnDisenchanting);
+            }
+
+            if (event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.MAGMA_BLOCK) {
+                player.getInventory().remove(player.getInventory().getItemInMainHand());
+                player.sendMessage(HexColor.GREEN + "Item in Main Hand deleted.");
+                player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
             }
         }
 
@@ -122,6 +140,8 @@ public class PlayerInteractListener implements Listener {
         allowedItems.add(Material.BARREL);
         allowedItems.add(Material.SMITHING_TABLE);
         allowedItems.add(Material.RESPAWN_ANCHOR);
+        allowedItems.add(Material.CARVED_PUMPKIN);
+        allowedItems.add(Material.JACK_O_LANTERN);
 
         if (e.equals(EquipmentSlot.HAND)
                 && event.getAction() == Action.RIGHT_CLICK_BLOCK) {

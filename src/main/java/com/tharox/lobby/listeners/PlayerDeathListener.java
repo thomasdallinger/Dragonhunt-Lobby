@@ -4,6 +4,7 @@ import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.chat.Prefixes;
 import com.tharox.lobby.db.DatabaseExecutor;
 import com.tharox.lobby.db.DbValues;
+import com.tharox.lobby.game.GameState;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -44,10 +45,9 @@ public class PlayerDeathListener implements Listener {
 
             // Player did not kill himself/herself
             if (!killer.equals(player)) {
-                int levelsToAdd = 5;
-                killer.setLevel(killer.getLevel() + levelsToAdd);
-                killer.sendTitle("", HexColor.GREEN + "+" + levelsToAdd + ChatColor.WHITE + " Level",
-                        0, 30, 10);
+                killer.setLevel(killer.getLevel() + GameState.levelsOnKill);
+                killer.sendTitle("", HexColor.GREEN + "+" + GameState.levelsOnKill
+                        + ChatColor.WHITE + " Level", 0, 30, 10);
                 killer.playSound(killer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                 killer.sendMessage(ChatColor.GRAY + "You have killed "
                         + ChatColor.WHITE + player.getName() + ChatColor.GRAY + ".");
@@ -66,9 +66,7 @@ public class PlayerDeathListener implements Listener {
                 for (ItemStack item : event.getDrops()) {
                     if (item.getItemMeta() == null) continue;
                     // Do not drop non-SkyPvP items.
-                    if (!item.getItemMeta().getDisplayName().equals(HexColor.YELLOW + "Profile")
-                            && !item.getItemMeta().getDisplayName().equals(HexColor.YELLOW + "Purchase Kits")
-                            && !item.getItemMeta().getDisplayName().equals(HexColor.YELLOW + "Play")) {
+                    if (!GameState.protectedItemMaterials.contains(item.getType())) {
                         killer.getWorld().dropItemNaturally(killer.getLocation(), item);
                     }
                 }

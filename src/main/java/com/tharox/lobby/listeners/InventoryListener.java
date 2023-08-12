@@ -1,6 +1,6 @@
 package com.tharox.lobby.listeners;
 
-import com.tharox.lobby.chat.HexColor;
+import com.tharox.lobby.game.GameState;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,6 +22,8 @@ public class InventoryListener implements Listener {
             item = event.getCurrentItem();
         }
 
+        // Make certain items unmovable.
+
         // 6 = Profile, 7 = Purchase Kits, 8 = Play
         if (event.getHotbarButton() == 6 || event.getHotbarButton() == 7 || event.getHotbarButton() == 8) {
             event.setCancelled(true);
@@ -33,6 +35,15 @@ public class InventoryListener implements Listener {
 
         if (event.getSlot() == 6 || event.getSlot() == 7 || event.getSlot() == 8) {
             event.setCancelled(true);
+        }
+
+        if (item == null) return;
+
+        // Check if the item was an Elytra and if the Chestplate slot was clicked.
+        if (item.getType().equals(Material.ELYTRA)) {
+            if (event.getSlot() == 38) {
+                event.setCancelled(true);
+            }
         }
     }
 
@@ -49,13 +60,11 @@ public class InventoryListener implements Listener {
         ItemStack offHandItem = event.getOffHandItem();
 
         if (offHandItem == null) return;
-        if (offHandItem.getItemMeta() == null) return;
 
-        String displayName = offHandItem.getItemMeta().getDisplayName();
-        if (displayName.equals(HexColor.YELLOW + "Profile")
-                || displayName.equals(HexColor.YELLOW + "Purchase Kits")
-                || displayName.equals(HexColor.YELLOW + "Play")) {
+        if (GameState.protectedItemMaterials.contains(offHandItem.getType())) {
             event.setCancelled(true);
         }
+
+        // Elytra cannot be swapped: not in the hotbar, no checking needed
     }
 }

@@ -137,8 +137,8 @@ public class LootManager implements Listener {
                 }
             }
 
-            // POSITIVE EFFECTS: Pumpkin
-            if (block.getType() == Material.PUMPKIN) {
+            // POSITIVE EFFECTS: Carved Pumpkin
+            if (block.getType() == Material.CARVED_PUMPKIN) {
                 Random rand = new Random();
                 int chance = rand.nextInt(5) + 1;
 
@@ -146,7 +146,7 @@ public class LootManager implements Listener {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
             }
 
-            // RANDOM EFFECTS: Pumpkin Lantern
+            // RANDOM EFFECTS: Jack o Lantern
             if (block.getType() == Material.JACK_O_LANTERN) {
                 Random rand = new Random();
                 int chance = rand.nextInt(5) + 1;
@@ -157,10 +157,9 @@ public class LootManager implements Listener {
 
             block.setType(Material.BEDROCK);
 
-            int levelsToAdd = 1;
-            player.setLevel(player.getLevel() + levelsToAdd);
-            player.sendTitle("", HexColor.GREEN + "+" + levelsToAdd + ChatColor.WHITE + " Level",
-                    0, 30, 10);
+            player.setLevel(player.getLevel() + GameState.levelsOnLooting);
+            player.sendTitle("", HexColor.GREEN + "+" + GameState.levelsOnLooting
+                            + ChatColor.WHITE + " Level", 0, 30, 10);
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
 
             // Reset the loot 2 minutes after the click.
