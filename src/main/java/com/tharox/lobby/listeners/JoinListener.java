@@ -21,6 +21,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,19 +33,19 @@ public class JoinListener implements Listener {
         player.teleport(Main.getSpawnLocation());
         player.setBedSpawnLocation(Main.getSpawnLocation(), true);
 
-        player.sendMessage(HexColor.PURPLE.toString() + "Welcome " + player.getName() + ".");
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST, 1, 1);
         event.setJoinMessage(Prefixes.getJoinPrefix() + ChatColor.WHITE + player.getName()
                 + ChatColor.GRAY + " has joined.");
 
         ElytraSwapRunnable.playerWasInAir.put(player, false);
 
-        // every time a player joins, the scoreboard of every player is updated
+        // Every time a player joins, the scoreboard of every player is updated.
         for (Player target : Bukkit.getOnlinePlayers()) {
             new Scoreboard(target);
         }
 
-        Main.getInstance().getTablistManager().setPlayerList(player); // sets tablist header and footer
+        // Sets tablist header and footer.
+        Main.getInstance().getTablistManager().setPlayerList(player);
         Main.getInstance().getTablistManager().setAllPlayerTeams();
 
         GameState.giveItem(player, new ItemStack(Material.CLOCK), HexColor.YELLOW + "Profile"
@@ -58,10 +59,9 @@ public class JoinListener implements Listener {
     }
 
     private void addPlayerToDatabase(Player player) {
+        AtomicBoolean returningPlayer = new AtomicBoolean(false);
+
         DatabaseExecutor.executeDatabaseHandler((con) -> {
-
-            //player.sendMessage(HexColor.GREEN.toString() + ChatColor.ITALIC + "Database Connection successful...");
-
             Pattern pattern = Pattern.compile("^[\\sa-zA-ZäöüßÄÖÜ0-9!._-]+$", Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(player.getName());
             if (!matcher.matches()) {
@@ -75,12 +75,15 @@ public class JoinListener implements Listener {
             ResultSet rs = stmt.executeQuery(query);
 
             if (rs.next()) {
+                returningPlayer.set(true);
+                player.sendMessage(HexColor.PURPLE.toString() + "Welcome back, " + player.getName() + "!");
+
                 // Update the players name each time the player joins the server.
                 query = "UPDATE players SET name = '" + player.getName() + "' WHERE uuid = '"
                         + player.getUniqueId() + "'";
 
                 stmt = con.createStatement();
-                rs = stmt.executeQuery(query);
+                stmt.executeQuery(query);
 
                 rs.close();
                 stmt.close();
@@ -94,6 +97,15 @@ public class JoinListener implements Listener {
             stmt.execute(query);
             stmt.close();
         });
+
+        if (returningPlayer.get()) return;
+
+        player.sendMessage(HexColor.PURPLE + "Welcome to Dragonhunt, " + player.getName() + "!\n"
+                + ChatColor.GRAY + "Dive into an " + ChatColor.WHITE + "innovative and action-packed PvPvE gamemode"
+                + ChatColor.GRAY + ".\nJoin a match by clicking the " + ChatColor.WHITE + "End Crystal"
+                + ChatColor.GRAY + " in your inventory.\n"
+                + ChatColor.GRAY + "Don't hesitate to ask fellow players for help. \n"
+                + ChatColor.WHITE + " Good luck and enjoy!");
 
         // Start-Equipment when first joining the server
         player.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET));
