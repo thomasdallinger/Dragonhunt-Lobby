@@ -45,6 +45,16 @@ public class Prefixes {
         return ChatColor.DARK_GRAY + "[" + HexColor.RED + "Admin" + ChatColor.DARK_GRAY + "] ";
     }
 
+    // VIP: players who have VIP
+    public static String getVIPPrefix() {
+        return ChatColor.DARK_GRAY + "[" + HexColor.PURPLE + "VIP" + ChatColor.DARK_GRAY + "] ";
+    }
+
+    // Premium: players who have Premium
+    public static String getPremiumPrefix() {
+        return ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Premium" + ChatColor.DARK_GRAY + "] ";
+    }
+
     // DEATH: when a player dies
     public static String getDeathPrefix() {
         return ChatColor.DARK_GRAY + "[" + HexColor.RED + "☠☠☠" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;

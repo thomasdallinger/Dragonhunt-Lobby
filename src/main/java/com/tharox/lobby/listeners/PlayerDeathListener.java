@@ -66,7 +66,7 @@ public class PlayerDeathListener implements Listener {
                 for (ItemStack item : event.getDrops()) {
                     if (item.getItemMeta() == null) continue;
                     // Do not drop non-SkyPvP items.
-                    if (!item.getItemMeta().getDisplayName().equals(HexColor.YELLOW + "Features")
+                    if (!item.getItemMeta().getDisplayName().equals(HexColor.YELLOW + "Profile")
                             && !item.getItemMeta().getDisplayName().equals(HexColor.YELLOW + "Purchase Kits")
                             && !item.getItemMeta().getDisplayName().equals(HexColor.YELLOW + "Play")) {
                         killer.getWorld().dropItemNaturally(killer.getLocation(), item);

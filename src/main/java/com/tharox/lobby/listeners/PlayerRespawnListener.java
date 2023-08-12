@@ -27,7 +27,7 @@ public class PlayerRespawnListener implements Listener {
             player.getInventory().setItem(1, new ItemStack(Material.BOW));
             player.getInventory().setItem(2, new ItemStack(Material.ARROW, 24));
 
-            GameState.giveItem(player, new ItemStack(Material.RAW_GOLD), HexColor.YELLOW + "Features"
+            GameState.giveItem(player, new ItemStack(Material.CLOCK), HexColor.YELLOW + "Profile"
                     + ChatColor.GRAY + " (Right-Click)", 6);
             GameState.giveItem(player, new ItemStack(Material.NETHER_STAR), HexColor.YELLOW + "Purchase Kits"
                     + ChatColor.GRAY + " (Right-Click)", 7);

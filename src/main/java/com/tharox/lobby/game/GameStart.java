@@ -38,9 +38,9 @@ public class GameStart {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
 
-            String query = "INSERT INTO games (server_id, date, version, mode, ranked, free_kit) " +
-                    "VALUES ('" + serverID + "', '" + dtf.format(now)
-                    + "', '1.0.6', 'Classic', false, 'Demolitionist')";
+            String query = "INSERT INTO games (server_id, date, version, mode, elo_active, free_kit) " +
+                    "VALUES ('" + serverID + "', '" + dtf.format(now) + "', '" + GameState.version
+                    + "', '" + GameState.mode + "', '" + GameState.eloActive + "', '" + GameState.freeKit + "')";
 
             Statement stmt = con.createStatement();
             stmt.execute(query);

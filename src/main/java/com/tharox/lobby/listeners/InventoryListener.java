@@ -22,7 +22,7 @@ public class InventoryListener implements Listener {
             item = event.getCurrentItem();
         }
 
-        // 6 = Features, 7 = Purchase Kits, 8 = Play
+        // 6 = Profile, 7 = Purchase Kits, 8 = Play
         if (event.getHotbarButton() == 6 || event.getHotbarButton() == 7 || event.getHotbarButton() == 8) {
             event.setCancelled(true);
             return;
@@ -52,7 +52,7 @@ public class InventoryListener implements Listener {
         if (offHandItem.getItemMeta() == null) return;
 
         String displayName = offHandItem.getItemMeta().getDisplayName();
-        if (displayName.equals(HexColor.YELLOW + "Features")
+        if (displayName.equals(HexColor.YELLOW + "Profile")
                 || displayName.equals(HexColor.YELLOW + "Purchase Kits")
                 || displayName.equals(HexColor.YELLOW + "Play")) {
             event.setCancelled(true);

@@ -1,4 +1,4 @@
-package com.tharox.lobby.features;
+package com.tharox.lobby.profiles;
 
 import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.db.DbValues;
@@ -12,17 +12,17 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class FeaturesInventory {
+public class ProfileInventory {
     public Inventory menu, color;
 
-    public FeaturesInventory(Player player) {
+    public ProfileInventory(Player player) {
         menu = createMenuInventory(player);
         color = createColorInventory(player);
     }
 
     private Inventory createMenuInventory(Player player) {
         Inventory inv = Bukkit.createInventory(null, 36, HexColor.PURPLE.toString() + ChatColor.BOLD
-                + "FEATURES");
+                + "MANAGE PROFILE MENU");
 
         // Player has premium and has not claimed the credits this day
 
@@ -52,7 +52,7 @@ public class FeaturesInventory {
 
     private Inventory createColorInventory(Player player) {
         Inventory inv = Bukkit.createInventory(null, 36, HexColor.PURPLE.toString() + ChatColor.BOLD
-                + "FEATURES " + ChatColor.DARK_GRAY + "Custom Color");
+                + "MANAGE PROFILE " + ChatColor.DARK_GRAY + "Custom Color");
 
         addItem(inv, Material.WHITE_WOOL, HexColor.GREEN + "Color Preview", 10);
 

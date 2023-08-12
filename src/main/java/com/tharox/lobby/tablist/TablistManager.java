@@ -3,6 +3,7 @@ package com.tharox.lobby.tablist;
 import com.tharox.lobby.Main;
 import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.chat.Prefixes;
+import com.tharox.lobby.db.DbValues;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -45,17 +46,35 @@ public class TablistManager {
         admins.setColor(org.bukkit.ChatColor.WHITE);
         admins.setSuffix(Prefixes.getEloSuffix(player));
 
-        Team players = scoreboard.getTeam("1players");
+        Team vips = scoreboard.getTeam("1vips");
+
+        if (vips == null)
+            vips = scoreboard.registerNewTeam("1vips");
+
+        vips.setPrefix(Prefixes.getVIPPrefix());
+        vips.setColor(org.bukkit.ChatColor.WHITE);
+        vips.setSuffix(Prefixes.getEloSuffix(player));
+
+        Team premiums = scoreboard.getTeam("2premiums");
+
+        if (premiums == null)
+            premiums = scoreboard.registerNewTeam("2premiums");
+
+        premiums.setPrefix(Prefixes.getPremiumPrefix());
+        premiums.setColor(org.bukkit.ChatColor.WHITE);
+        premiums.setSuffix(Prefixes.getEloSuffix(player));
+
+        Team players = scoreboard.getTeam("3players");
 
         if (players == null)
-            players = scoreboard.registerNewTeam("1players");
+            players = scoreboard.registerNewTeam("3players");
 
         players.setColor(org.bukkit.ChatColor.WHITE);
         players.setSuffix(Prefixes.getEloSuffix(player));
 
         int playerCount = 0;
 
-        // add players to teams: sorted alphabetically, grouped by team type (admin, top3, player)
+        // Add players to teams: sorted alphabetically, grouped by team type (admin > vip > premium > player)
         for (Player target : Bukkit.getOnlinePlayers()) {
             if (target.isOp()) {
                 Team team = scoreboard.getTeam("0" + playerCount + "admin");
@@ -67,10 +86,30 @@ public class TablistManager {
                 team.setSuffix(Prefixes.getEloSuffix(player));
                 team.addEntry(target.getName());
 
-            } else {
-                Team team = scoreboard.getTeam("1" + playerCount + "player");
+            } else if (DbValues.getRole(target).equals("VIP")) {
+                Team team = scoreboard.getTeam("1" + playerCount + "vip");
                 if (team == null)
-                    team = scoreboard.registerNewTeam("1" + playerCount + "player");
+                    team = scoreboard.registerNewTeam("1" + playerCount + "vip");
+
+                team.setPrefix(Prefixes.getVIPPrefix());
+                team.setColor(org.bukkit.ChatColor.WHITE);
+                team.setSuffix(Prefixes.getEloSuffix(player));
+                team.addEntry(target.getName());
+
+            } else if (DbValues.getRole(target).equals("Premium")) {
+                Team team = scoreboard.getTeam("2" + playerCount + "premium");
+                if (team == null)
+                    team = scoreboard.registerNewTeam("2" + playerCount + "premium");
+
+                team.setPrefix(Prefixes.getPremiumPrefix());
+                team.setColor(org.bukkit.ChatColor.WHITE);
+                team.setSuffix(Prefixes.getEloSuffix(player));
+                team.addEntry(target.getName());
+
+            } else {
+                Team team = scoreboard.getTeam("3" + playerCount + "player");
+                if (team == null)
+                    team = scoreboard.registerNewTeam("3" + playerCount + "player");
 
                 team.setColor(org.bukkit.ChatColor.WHITE);
                 team.setSuffix(Prefixes.getEloSuffix(player));

@@ -47,7 +47,7 @@ public class JoinListener implements Listener {
         Main.getInstance().getTablistManager().setPlayerList(player); // sets tablist header and footer
         Main.getInstance().getTablistManager().setAllPlayerTeams();
 
-        GameState.giveItem(player, new ItemStack(Material.RAW_GOLD), HexColor.YELLOW + "Features"
+        GameState.giveItem(player, new ItemStack(Material.CLOCK), HexColor.YELLOW + "Profile"
                 + ChatColor.GRAY + " (Right-Click)", 6);
         GameState.giveItem(player, new ItemStack(Material.NETHER_STAR), HexColor.YELLOW + "Purchase Kits"
                 + ChatColor.GRAY + " (Right-Click)", 7);
@@ -75,6 +75,13 @@ public class JoinListener implements Listener {
             ResultSet rs = stmt.executeQuery(query);
 
             if (rs.next()) {
+                // Update the players name each time the player joins the server.
+                query = "UPDATE players SET name = '" + player.getName() + "' WHERE uuid = '"
+                        + player.getUniqueId() + "'";
+
+                stmt = con.createStatement();
+                rs = stmt.executeQuery(query);
+
                 rs.close();
                 stmt.close();
                 return;

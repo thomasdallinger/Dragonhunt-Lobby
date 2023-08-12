@@ -13,6 +13,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,8 @@ public class LootManager implements Listener {
     public static final List<LootItem> epic = new ArrayList<>();
     public static final List<LootItem> exotic = new ArrayList<>();
     public static final List<LootItem> mythic = new ArrayList<>();
+    public static final List<PotionEffectType> positiveEffects = new ArrayList<>();
+    public static final List<PotionEffectType> randomEffects = new ArrayList<>();
 
     public LootManager(FileConfiguration lootConfig) {
         for (String rarity : rarities) {
@@ -60,6 +64,19 @@ public class LootManager implements Listener {
 
             }
         }
+
+        positiveEffects.add(PotionEffectType.DAMAGE_RESISTANCE);
+        positiveEffects.add(PotionEffectType.ABSORPTION);
+        positiveEffects.add(PotionEffectType.SPEED);
+        positiveEffects.add(PotionEffectType.JUMP);
+        positiveEffects.add(PotionEffectType.REGENERATION);
+
+        randomEffects.addAll(positiveEffects);
+        randomEffects.add(PotionEffectType.POISON);
+        randomEffects.add(PotionEffectType.SLOW);
+        randomEffects.add(PotionEffectType.WEAKNESS);
+        randomEffects.add(PotionEffectType.BLINDNESS);
+        randomEffects.add(PotionEffectType.LEVITATION);
     }
 
     @EventHandler
@@ -118,6 +135,24 @@ public class LootManager implements Listener {
                 } else {
                     world.dropItemNaturally(location, Objects.requireNonNull(GameState.createGrappler()));
                 }
+            }
+
+            // POSITIVE EFFECTS: Pumpkin
+            if (block.getType() == Material.PUMPKIN) {
+                Random rand = new Random();
+                int chance = rand.nextInt(5) + 1;
+
+                player.addPotionEffect(new PotionEffect(positiveEffects.get(chance), 200, 0));
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
+            }
+
+            // RANDOM EFFECTS: Pumpkin Lantern
+            if (block.getType() == Material.JACK_O_LANTERN) {
+                Random rand = new Random();
+                int chance = rand.nextInt(5) + 1;
+
+                player.addPotionEffect(new PotionEffect(randomEffects.get(chance), 300, 1));
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
             }
 
             block.setType(Material.BEDROCK);

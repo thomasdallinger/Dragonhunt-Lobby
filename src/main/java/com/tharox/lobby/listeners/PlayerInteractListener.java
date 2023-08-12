@@ -3,12 +3,13 @@ package com.tharox.lobby.listeners;
 import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.chat.Prefixes;
 import com.tharox.lobby.kits.selection.KitInventory;
-import com.tharox.lobby.features.FeaturesInventory;
+import com.tharox.lobby.profiles.ProfileInventory;
 import com.tharox.lobby.queue.Queue;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -87,10 +88,23 @@ public class PlayerInteractListener implements Listener {
                 event.setCancelled(true);
                 player.openInventory(new KitInventory(player).kits);
                 player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
-            } else if (itemName.contains(HexColor.YELLOW + "Features")) {
+
+            } else if (itemName.contains(HexColor.YELLOW + "Profile")) {
                 event.setCancelled(true);
-                player.openInventory(new FeaturesInventory(player).menu);
-                player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
+
+                player.sendMessage(Prefixes.getErrorPrefix() + "Managing your profile will be available soon.");
+                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 1);
+
+                //player.openInventory(new ProfileInventory(player).menu);
+                //player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
+            }
+        }
+
+        // Modifiy the functionality of the Fletching Table
+        if (equipmentSlot.equals(EquipmentSlot.HAND)
+                && (event.getAction() == Action.LEFT_CLICK_BLOCK|| event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            if(event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.FLETCHING_TABLE) {
+                removeEnchantments(player.getInventory().getItemInMainHand());
             }
         }
 
@@ -134,5 +148,11 @@ public class PlayerInteractListener implements Listener {
 
         Date date = new Date();
         queueCooldown.put(player, date.getTime() + 7000); // Cooldown: 7 seconds = 7000 milliseconds
+    }
+
+    private void removeEnchantments(ItemStack itemStack) {
+        for (Enchantment enchantment : itemStack.getEnchantments().keySet()) {
+            itemStack.removeEnchantment(enchantment);
+        }
     }
 }

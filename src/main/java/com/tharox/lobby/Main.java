@@ -13,7 +13,7 @@ import com.tharox.lobby.items.LootTableListener;
 import com.tharox.lobby.kits.selection.KitListener;
 import com.tharox.lobby.listeners.*;
 import com.tharox.lobby.movement.ElytraSwapRunnable;
-import com.tharox.lobby.features.FeaturesListener;
+import com.tharox.lobby.profiles.ProfileListener;
 import com.tharox.lobby.queue.Queue;
 import com.tharox.lobby.tablist.TablistManager;
 import net.md_5.bungee.api.ChatColor;
@@ -158,7 +158,7 @@ public final class Main extends JavaPlugin implements PluginMessageListener {
         pluginManager.registerEvents(new EntityDamageListener(), this);
 
         pluginManager.registerEvents(new KitListener(), this);
-        pluginManager.registerEvents(new FeaturesListener(), this);
+        pluginManager.registerEvents(new ProfileListener(), this);
 
         pluginManager.registerEvents(new GrappleListener(), this);
     }

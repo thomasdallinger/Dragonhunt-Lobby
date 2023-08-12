@@ -1,4 +1,4 @@
-package com.tharox.lobby.features;
+package com.tharox.lobby.profiles;
 
 import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.chat.Prefixes;
@@ -10,14 +10,14 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class FeaturesListener implements Listener {
+public class ProfileListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        FeaturesInventory premiumInventory = new FeaturesInventory(player);
+        ProfileInventory premiumInventory = new ProfileInventory(player);
 
-        if (!event.getView().getTitle().contains("FEATURES")) return;
+        if (!event.getView().getTitle().contains("MANAGE PROFILE")) return;
 
         event.setCancelled(true);
 
@@ -27,8 +27,8 @@ public class FeaturesListener implements Listener {
 
         String clickedItemName = item.getItemMeta().getDisplayName();
 
-        // inventory is the features menu
-        if (event.getView().getTitle().contains("FEATURES MENU")) {
+        // inventory is the manage profile menu
+        if (event.getView().getTitle().equals("MANAGE PROFILE MENU")) {
             if (clickedItemName.contains("Custom Color")) {
                 player.closeInventory();
                 player.openInventory(premiumInventory.color);
@@ -41,8 +41,8 @@ public class FeaturesListener implements Listener {
             return;
         }
 
-        // event.getInventory() ... top inventory = features
-        // if the clicked inventory is not the features inventory, cancel the event
+        // event.getInventory() ... top inventory = manage profile
+        // if the clicked inventory is not the profile inventory, cancel the event
         if (event.getClickedInventory() != event.getInventory()) {
             event.setCancelled(true);
             return;
@@ -60,7 +60,7 @@ public class FeaturesListener implements Listener {
 
         // NOTE: always refresh the inventory instance before opening it again
         // so all data (Locked / Unlocked / Credits) updates
-        premiumInventory = new FeaturesInventory(player);
+        premiumInventory = new ProfileInventory(player);
         player.openInventory(premiumInventory.color);
     }
 }
