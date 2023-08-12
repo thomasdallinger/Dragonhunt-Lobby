@@ -108,18 +108,20 @@ public class PlayerInteractListener implements Listener {
                 && (event.getAction() == Action.LEFT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
             ItemStack mainHandItem = player.getInventory().getItemInMainHand();
 
-            if (!GameState.protectedItemMaterials.contains(mainHandItem.getType())) {
+            if (GameState.protectedItemMaterials.contains(mainHandItem.getType()) || event.getClickedBlock() == null) {
                 return;
             }
 
-            if (event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.FLETCHING_TABLE) {
-                removeEnchantments(mainHandItem);
-                player.sendMessage(HexColor.GREEN + "Item in Main Hand disenchanted.");
-                player.playSound(player.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
-                player.setLevel(player.getLevel() + GameState.levelsOnDisenchanting);
+            if (event.getClickedBlock().getType() == Material.FLETCHING_TABLE) {
+                if (!mainHandItem.getEnchantments().isEmpty()) {
+                    removeEnchantments(mainHandItem);
+                    player.sendMessage(HexColor.GREEN + "Item in Main Hand disenchanted.");
+                    player.playSound(player.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                    player.setLevel(player.getLevel() + GameState.levelsOnDisenchanting);
+                }
             }
 
-            if (event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.MAGMA_BLOCK) {
+            if (event.getClickedBlock().getType() == Material.MAGMA_BLOCK) {
                 player.getInventory().remove(player.getInventory().getItemInMainHand());
                 player.sendMessage(HexColor.GREEN + "Item in Main Hand deleted.");
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);

@@ -7,6 +7,7 @@ import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.commands.*;
 import com.tharox.lobby.entities.EntityDamageByEntityListener;
 import com.tharox.lobby.entities.EntityDamageListener;
+import com.tharox.lobby.items.InventoryCloseListener;
 import com.tharox.lobby.items.InventoryOpenListener;
 import com.tharox.lobby.items.LootManager;
 import com.tharox.lobby.items.LootTableListener;
@@ -153,6 +154,7 @@ public final class Main extends JavaPlugin implements PluginMessageListener {
         pluginManager.registerEvents(new LootManager(getConfig()), this);
         pluginManager.registerEvents(new LootTableListener(), this);
         pluginManager.registerEvents(new InventoryOpenListener(), this);
+        pluginManager.registerEvents(new InventoryCloseListener(), this);
 
         pluginManager.registerEvents(new EntityDamageByEntityListener(), this);
         pluginManager.registerEvents(new EntityDamageListener(), this);

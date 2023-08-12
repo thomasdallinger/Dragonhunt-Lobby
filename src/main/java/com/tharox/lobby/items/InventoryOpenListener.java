@@ -13,7 +13,7 @@ public class InventoryOpenListener implements Listener {
      * Put one stack of lapis into the enchanting table.
      */
     @EventHandler
-    public void onInventoryClick(InventoryOpenEvent event) {
+    public void onInventoryOpen(InventoryOpenEvent event) {
         if (event.getInventory() instanceof EnchantingInventory) {
             EnchantingInventory inv = (EnchantingInventory) event.getInventory();
             inv.setSecondary(new ItemStack(Material.LAPIS_LAZULI, 64));

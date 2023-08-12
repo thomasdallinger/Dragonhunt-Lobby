@@ -25,8 +25,8 @@ public class GameState {
     public static final int levelsOnLooting = 2;
     public static final int levelsOnDisenchanting = 1;
 
-    public static ArrayList<Material> protectedItemMaterials =
-            (ArrayList<Material>) Arrays.asList(Material.CLOCK, Material.NETHER_STAR, Material.END_CRYSTAL);
+    public static List<Material> protectedItemMaterials =
+            Arrays.asList(Material.CLOCK, Material.NETHER_STAR, Material.END_CRYSTAL);
 
     public static void giveItem(Player player, ItemStack item, String title, int index) {
         item.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
@@ -35,7 +35,7 @@ public class GameState {
 
         meta.setDisplayName(title);
 
-        if (title.equals(HexColor.YELLOW + "Play")) {
+        if (item.getType() == Material.END_CRYSTAL) {
             meta.setLore(Arrays.asList(
                     ChatColor.GRAY + "Right-Click: " + HexColor.GREEN + "Join the Queue.",
                     ChatColor.GRAY + "Right-Click again: " + HexColor.RED + "Leave the Queue."));
