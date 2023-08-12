@@ -58,7 +58,7 @@ public class Scoreboard extends ScoreboardBuilder {
         }
 
         setScore("Rank: " + HexColor.YELLOW + DbValues.getRank(player)
-                + ChatColor.GRAY + " (" + DbValues.getElo(player) + ")", 10);
+                + ChatColor.GRAY + " (" + DbValues.getElo(player) + " Elo)", 10);
 
         setScore("League: " + ChatColor.GRAY + ChatColor.BOLD + "ꜱɪʟᴠᴇʀ", 9);
 

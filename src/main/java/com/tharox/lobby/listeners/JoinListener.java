@@ -78,14 +78,15 @@ public class JoinListener implements Listener {
                 returningPlayer.set(true);
                 player.sendMessage(HexColor.PURPLE.toString() + "Welcome back, " + player.getName() + "!");
 
+                stmt.close();
+                rs.close();
+
                 // Update the players name each time the player joins the server.
                 query = "UPDATE players SET name = '" + player.getName() + "' WHERE uuid = '"
                         + player.getUniqueId() + "'";
 
                 stmt = con.createStatement();
-                stmt.executeQuery(query);
-
-                rs.close();
+                stmt.execute(query);
                 stmt.close();
                 return;
             }
