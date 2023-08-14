@@ -119,12 +119,17 @@ public class PlayerInteractListener implements Listener {
                     player.playSound(player.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
                     player.setLevel(player.getLevel() + GameState.levelsOnDisenchanting);
                 }
+
+                // No more interaction possible such as equipping the disenchanted item (armor).
+                return;
             }
 
             if (event.getClickedBlock().getType() == Material.MAGMA_BLOCK) {
                 player.getInventory().remove(player.getInventory().getItemInMainHand());
                 player.sendMessage(HexColor.GREEN + "Item in Main Hand deleted.");
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
+
+                return;
             }
         }
 
@@ -175,7 +180,6 @@ public class PlayerInteractListener implements Listener {
     private void removeEnchantments(ItemStack itemStack) {
         if (itemStack.getType() == Material.ENCHANTED_BOOK) {
             itemStack.setType(Material.BOOK);
-            return;
         }
 
         for (Enchantment enchantment : itemStack.getEnchantments().keySet()) {
