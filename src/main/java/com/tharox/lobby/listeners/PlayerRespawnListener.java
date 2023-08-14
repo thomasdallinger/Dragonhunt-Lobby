@@ -15,6 +15,6 @@ public class PlayerRespawnListener implements Listener {
         Player player = event.getPlayer();
 
         Bukkit.getScheduler().runTaskLater(Main.getInstance(),
-                task -> GameState.givePlayerStartEquipment(player), 10L);
+                task -> GameState.givePlayerStartEquipment(player), 5L);
     }
 }

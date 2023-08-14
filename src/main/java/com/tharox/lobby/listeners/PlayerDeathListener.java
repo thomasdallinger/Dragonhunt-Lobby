@@ -7,6 +7,7 @@ import com.tharox.lobby.db.DbValues;
 import com.tharox.lobby.game.GameState;
 import com.tharox.lobby.scoreboard.Scoreboard;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -32,6 +33,7 @@ public class PlayerDeathListener implements Listener {
         if (event.getDeathMessage() == null) return;
 
         addPlayerDeath(player);
+        new Scoreboard(player);
 
         // strike a lightning effect at the player's death location
         player.getWorld().strikeLightningEffect(player.getLocation());
@@ -58,6 +60,7 @@ public class PlayerDeathListener implements Listener {
                         + HexColor.GREEN + " for " + ChatColor.DARK_GREEN + "10" + HexColor.GREEN + " seconds.");
 
                 addPlayerKill(killer);
+                new Scoreboard(killer);
 
                 player.sendMessage(Prefixes.getDeathPrefix() + ChatColor.GRAY + "You have been killed by "
                         + HexColor.RED + killer.getName()
@@ -66,8 +69,9 @@ public class PlayerDeathListener implements Listener {
 
                 for (ItemStack item : event.getDrops()) {
                     if (item.getItemMeta() == null) continue;
-                    // Do not drop non-SkyPvP items.
-                    if (!GameState.protectedItemMaterials.contains(item.getType())) {
+                    // Do not drop non-SkyPvP items or generated arrows.
+                    if (!GameState.protectedItemMaterials.contains(item.getType())
+                            && item.getType() != Material.ARROW) {
                         killer.getWorld().dropItemNaturally(killer.getLocation(), item);
                     }
                 }
@@ -83,10 +87,6 @@ public class PlayerDeathListener implements Listener {
         event.setKeepLevel(true);
         player.setLevel(0);
         player.setExp(0);
-
-        // Update Scoreboards to display SkyPvP kills and deaths correctly.
-        new Scoreboard(player);
-        new Scoreboard(killer);
     }
 
     private void addPlayerDeath(Player player) {

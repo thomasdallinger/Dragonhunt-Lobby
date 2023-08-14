@@ -37,7 +37,7 @@ public class Arrows {
                     }
                 }
             }
-        }.runTaskTimer(Main.getInstance(), 0, 140);
+        }.runTaskTimer(Main.getInstance(), 0, 200);
     }
 
     private void replaceCurrentArrowStack(ItemStack currentArrowStack, ItemStack generatedArrows, Player player) {
