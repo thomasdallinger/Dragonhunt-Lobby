@@ -173,6 +173,11 @@ public class PlayerInteractListener implements Listener {
     }
 
     private void removeEnchantments(ItemStack itemStack) {
+        if (itemStack.getType() == Material.ENCHANTED_BOOK) {
+            itemStack.setType(Material.BOOK);
+            return;
+        }
+
         for (Enchantment enchantment : itemStack.getEnchantments().keySet()) {
             itemStack.removeEnchantment(enchantment);
         }
