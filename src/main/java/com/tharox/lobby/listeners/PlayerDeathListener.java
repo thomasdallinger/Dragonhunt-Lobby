@@ -5,6 +5,7 @@ import com.tharox.lobby.chat.Prefixes;
 import com.tharox.lobby.db.DatabaseExecutor;
 import com.tharox.lobby.db.DbValues;
 import com.tharox.lobby.game.GameState;
+import com.tharox.lobby.scoreboard.Scoreboard;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -81,6 +82,11 @@ public class PlayerDeathListener implements Listener {
 
         event.setKeepLevel(true);
         player.setLevel(0);
+        player.setExp(0);
+
+        // Update Scoreboards to display SkyPvP kills and deaths correctly.
+        new Scoreboard(player);
+        new Scoreboard(killer);
     }
 
     private void addPlayerDeath(Player player) {

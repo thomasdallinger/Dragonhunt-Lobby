@@ -1,6 +1,5 @@
 package com.tharox.lobby.listeners;
 
-import com.tharox.lobby.game.GameState;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,7 +32,9 @@ public class InventoryListener implements Listener {
         if (event.getClickedInventory() == null) return;
         if (event.getClickedInventory().getType() != InventoryType.PLAYER) return;
 
-        if (event.getSlot() == 6 || event.getSlot() == 7 || event.getSlot() == 8) {
+        // 40 = Offhand, 17 = Arrows
+        if (event.getSlot() == 6 || event.getSlot() == 7 || event.getSlot() == 8
+                || event.getSlot() == 40 || event.getSlot() == 17) {
             event.setCancelled(true);
         }
 
@@ -55,16 +56,11 @@ public class InventoryListener implements Listener {
         event.setCancelled(true);
     }
 
+    /**
+     * Offhand item must always be a shield.
+     */
     @EventHandler
     public void onItemSwap(PlayerSwapHandItemsEvent event) {
-        ItemStack offHandItem = event.getOffHandItem();
-
-        if (offHandItem == null) return;
-
-        if (GameState.protectedItemMaterials.contains(offHandItem.getType())) {
-            event.setCancelled(true);
-        }
-
-        // Elytra cannot be swapped: not in the hotbar, no checking needed
+        event.setCancelled(true);
     }
 }

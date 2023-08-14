@@ -1,5 +1,6 @@
 package com.tharox.lobby;
 
+import com.tharox.lobby.arrows.Arrows;
 import com.tharox.lobby.blocks.BlockBreakListener;
 import com.tharox.lobby.blocks.BlockPlaceListener;
 import com.tharox.lobby.chat.ChatListener;
@@ -64,6 +65,7 @@ public final class Main extends JavaPlugin implements PluginMessageListener {
         Queue.bossBar.setVisible(true);
 
         new ElytraSwapRunnable().runTaskTimer(Main.getInstance(), 0, 5);
+        new Arrows();
 
         new BukkitRunnable() {
             @Override

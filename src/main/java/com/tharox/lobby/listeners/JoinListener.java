@@ -48,13 +48,6 @@ public class JoinListener implements Listener {
         Main.getInstance().getTablistManager().setPlayerList(player);
         Main.getInstance().getTablistManager().setAllPlayerTeams();
 
-        GameState.giveItem(player, new ItemStack(Material.CLOCK), HexColor.YELLOW + "Profile"
-                + ChatColor.GRAY + " (Right-Click)", 6);
-        GameState.giveItem(player, new ItemStack(Material.NETHER_STAR), HexColor.YELLOW + "Purchase Kits"
-                + ChatColor.GRAY + " (Right-Click)", 7);
-        GameState.giveItem(player, new ItemStack(Material.END_CRYSTAL), HexColor.YELLOW + "Play"
-                + ChatColor.GRAY + " (Right-Click)", 8);
-
         addPlayerToDatabase(player);
     }
 
@@ -109,13 +102,7 @@ public class JoinListener implements Listener {
                 + ChatColor.WHITE + " Good luck and enjoy!");
 
         // Start-Equipment when first joining the server
-        player.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET));
-        player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
-        player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS));
-        player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
-        player.getInventory().setItem(0, new ItemStack(Material.WOODEN_SWORD));
-        player.getInventory().setItem(1, new ItemStack(Material.BOW));
-        player.getInventory().setItem(2, new ItemStack(Material.ARROW, 24));
+        GameState.givePlayerStartEquipment(player);
 
         // Update scoreboard (contains default values after the update)
         new Scoreboard(player);

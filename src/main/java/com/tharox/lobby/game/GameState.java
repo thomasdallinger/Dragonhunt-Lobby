@@ -28,6 +28,24 @@ public class GameState {
     public static List<Material> protectedItemMaterials =
             Arrays.asList(Material.CLOCK, Material.NETHER_STAR, Material.END_CRYSTAL);
 
+    public static void givePlayerStartEquipment(Player player) {
+        player.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET));
+        player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
+        player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS));
+        player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
+        player.getInventory().setItem(0, new ItemStack(Material.WOODEN_SWORD));
+        player.getInventory().setItem(1, new ItemStack(Material.BOW));
+
+        GameState.giveItem(player, new ItemStack(Material.SHIELD), ChatColor.AQUA + "Shield", 40);
+
+        GameState.giveItem(player, new ItemStack(Material.CLOCK), HexColor.YELLOW + "Profile"
+                + ChatColor.GRAY + " (Right-Click)", 6);
+        GameState.giveItem(player, new ItemStack(Material.NETHER_STAR), HexColor.YELLOW + "Purchase Kits"
+                + ChatColor.GRAY + " (Right-Click)", 7);
+        GameState.giveItem(player, new ItemStack(Material.END_CRYSTAL), HexColor.YELLOW + "Play"
+                + ChatColor.GRAY + " (Right-Click)", 8);
+    }
+
     public static void giveItem(Player player, ItemStack item, String title, int index) {
         item.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
         ItemMeta meta = item.getItemMeta();

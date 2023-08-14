@@ -92,7 +92,7 @@ public class LootManager implements Listener {
         }
 
         World world = block.getWorld();
-        Location location = block.getLocation();
+        Location location = new Location(block.getWorld(), block.getX(), block.getY() + 1, block.getZ());
         LootItem randomItem;
         ThreadLocalRandom random = ThreadLocalRandom.current();
 
@@ -159,7 +159,7 @@ public class LootManager implements Listener {
 
             player.setLevel(player.getLevel() + GameState.levelsOnLooting);
             player.sendTitle("", HexColor.GREEN + "+" + GameState.levelsOnLooting
-                            + ChatColor.WHITE + " Level", 0, 30, 10);
+                    + ChatColor.WHITE + " Level", 0, 30, 10);
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
 
             // Reset the loot 2 minutes after the click.
