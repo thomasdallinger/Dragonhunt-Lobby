@@ -9,13 +9,11 @@ import com.tharox.lobby.movement.ElytraSwapRunnable;
 import com.tharox.lobby.scoreboard.Scoreboard;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -39,6 +37,10 @@ public class JoinListener implements Listener {
 
         ElytraSwapRunnable.playerWasInAir.put(player, false);
 
+        // Add new players to the database / update returning players
+        // before accessing values such as their role for the tablist.
+        addPlayerToDatabase(player);
+
         // Every time a player joins, the scoreboard of every player is updated.
         for (Player target : Bukkit.getOnlinePlayers()) {
             new Scoreboard(target);
@@ -47,8 +49,6 @@ public class JoinListener implements Listener {
         // Sets tablist header and footer.
         Main.getInstance().getTablistManager().setPlayerList(player);
         Main.getInstance().getTablistManager().setAllPlayerTeams();
-
-        addPlayerToDatabase(player);
     }
 
     private void addPlayerToDatabase(Player player) {
@@ -103,8 +103,5 @@ public class JoinListener implements Listener {
 
         // Start-Equipment when first joining the server
         GameState.givePlayerStartEquipment(player);
-
-        // Update scoreboard (contains default values after the update)
-        new Scoreboard(player);
     }
 }
