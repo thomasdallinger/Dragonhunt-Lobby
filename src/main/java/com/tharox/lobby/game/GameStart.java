@@ -38,9 +38,10 @@ public class GameStart {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
 
+            // NOTE: boolean elo_active must be true/false and not set using a variable.
             String query = "INSERT INTO games (server_id, date, version, mode, elo_active, free_kit) " +
                     "VALUES ('" + serverID + "', '" + dtf.format(now) + "', '" + GameState.version
-                    + "', '" + GameState.mode + "', '" + GameState.eloActive + "', '" + GameState.freeKit + "')";
+                    + "', '" + GameState.mode + "', false, '" + GameState.freeKit + "')";
 
             Statement stmt = con.createStatement();
             stmt.execute(query);
