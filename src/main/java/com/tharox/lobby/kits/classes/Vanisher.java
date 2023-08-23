@@ -9,7 +9,7 @@ public class Vanisher extends Kit {
     public static final String title = HexColor.ASSASSIN + KitClass.ASSASSIN + " Vanisher";
     public static final String lore = ""
             + ChatColor.DARK_GRAY + "ᴀʙɪʟɪᴛʏ\n"
-            + ChatColor.GRAY + "Get " + ChatColor.WHITE + "Speed 3" + ChatColor.GRAY + " and become\n"
+            + ChatColor.GRAY + "Get " + ChatColor.WHITE + "Speed 2" + ChatColor.GRAY + " and become\n"
             + ChatColor.WHITE + "invisible" + ChatColor.GRAY + " and " + ChatColor.WHITE + "invulnerable"
             + ChatColor.GRAY + ".\n"
             + ChatColor.GRAY + "Your inventory will disappear\n"
