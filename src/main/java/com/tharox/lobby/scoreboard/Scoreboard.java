@@ -4,7 +4,6 @@ import com.tharox.lobby.Main;
 import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.db.DbValues;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.time.LocalDateTime;
@@ -45,37 +44,36 @@ public class Scoreboard extends ScoreboardBuilder {
         String season = "S1";
 
         if (DbValues.getSkyPvPKills(player, false) > 0) { // would be a division by 0
-            setScore(season + ": "
-                    + "☠ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, true) + " "
-                    + ChatColor.WHITE + "✟ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, false) + " "
+            setScore(season + " ☠ " + DbValues.getSkyPvPKills(player, true)
+                    + " ✟ " + DbValues.getSkyPvPKills(player, false) + " "
                     + ChatColor.GRAY + "(" + roundDecimalNumber(((double) DbValues.getSkyPvPKills(player, true)
                     / DbValues.getSkyPvPKills(player, false)), 2) + ")", 12);
         } else {
-            setScore(season + ": "
-                    + "☠ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, true) + " "
-                    + ChatColor.WHITE + "✟ " + HexColor.YELLOW + DbValues.getSkyPvPKills(player, false) + " "
+            setScore(season + " ☠ " + DbValues.getSkyPvPKills(player, true)
+                    + " ✟ " + DbValues.getSkyPvPKills(player, false) + " "
                     + ChatColor.GRAY + "(" + DbValues.getSkyPvPKills(player, true) + ")", 12);
         }
 
-        setScore("Rank: " + HexColor.YELLOW + DbValues.getRank(player)
+        setScore("Rank: " + ChatColor.GOLD + DbValues.getRank(player)
                 + ChatColor.GRAY + " (" + DbValues.getElo(player) + " Elo)", 10);
 
         setScore("League: " + ChatColor.GRAY + ChatColor.BOLD + "ꜱɪʟᴠᴇʀ", 9);
 
-        setScore("Credits: " + HexColor.YELLOW + DbValues.getCredits(player) + " ⛃", 8);
-
-        setScore("Kills: " + HexColor.YELLOW + DbValues.getKills(player, true), 6);
-        setScore("Deaths: " + HexColor.YELLOW + DbValues.getKills(player, false), 5);
+        setScore("Credits: " + ChatColor.GOLD + DbValues.getCredits(player) + " ⛃", 8);
 
         if (DbValues.getKills(player, false) > 0) { // would be a division by 0
-            setScore("K/D: " + HexColor.YELLOW
-                    + roundDecimalNumber(((double) DbValues.getKills(player, true)
-                    / DbValues.getKills(player, false)), 2), 4);
+            setScore("Kills: " + HexColor.YELLOW + DbValues.getKills(player, true)
+                    + ChatColor.GRAY + " (K/D: " + roundDecimalNumber(((double) DbValues.getKills(player, true)
+                    / DbValues.getKills(player, false)), 2) + ")", 6);
         } else {
-            setScore("K/D: " + HexColor.YELLOW + DbValues.getKills(player, true), 4);
+            setScore("Kills: " + HexColor.YELLOW + DbValues.getKills(player, true)
+                    + ChatColor.GRAY + " (K/D: " + DbValues.getKills(player, true) + ")", 6);
         }
 
-        setScore("Games: " + HexColor.YELLOW + DbValues.getGamesPlayed(player), 3);
+        setScore("Deaths: " + HexColor.YELLOW + DbValues.getKills(player, false), 5);
+        setScore("Games: " + HexColor.YELLOW + DbValues.getGamesPlayed(player), 4);
+        setScore("Avg. Position: " + HexColor.YELLOW
+                + roundDecimalNumber(DbValues.getAvgPosition(player), 2), 3);
         setScore("Wins: " + HexColor.YELLOW + DbValues.getWins(player), 2);
 
         if (DbValues.getGamesPlayed(player) != 0) { // would be a division by 0

@@ -165,6 +165,8 @@ public class PlayerInteractListener implements Listener {
     private void joinQueue(Player player) {
         Queue.inQueue.add(player);
         player.sendMessage(HexColor.GREEN + "You joined the queue.");
+        player.sendMessage(ChatColor.GRAY + "You can leave using "
+                + ChatColor.WHITE + "Right-Click" + ChatColor.GRAY + " again.");
         player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
     }
 

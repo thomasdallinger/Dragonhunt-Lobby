@@ -91,6 +91,33 @@ public class DbValues {
     }
 
     /**
+     * @return the average finishing position of a player
+     */
+    public static int getAvgPosition(Player player) {
+        final int[] amount = {0};
+
+        DatabaseExecutor.executeDatabaseHandler((con) -> {
+            String query = "SELECT AVG(position) FROM plays INNER JOIN players"
+                    + "ON plays.player = players.uuid WHERE position IS NOT NULL"
+                    + "AND plays.player = '" + player.getUniqueId() + "'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            int columns = rs.getMetaData().getColumnCount();
+
+            while (rs.next()) {
+                for (int i = 1; i <= columns; i++) {
+                    amount[0] = rs.getInt(i);
+                }
+            }
+            rs.close();
+            stmt.close();
+        });
+
+        return amount[0];
+    }
+
+    /**
      * @return the amount of wins the specific player has
      */
     public static int getWins(Player player) {
