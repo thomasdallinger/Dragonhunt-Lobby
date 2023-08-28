@@ -56,6 +56,9 @@ public class CombatListener implements Listener {
             damager = (Player) event.getDamager();
         } else return;
 
+        // Damager is at spawn, do nothing.
+        if (damager.getLocation().getY() > 210) return;
+
         // If the player damaged himself/herself, do nothing.
         if (target == damager) return;
 

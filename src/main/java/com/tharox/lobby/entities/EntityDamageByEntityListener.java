@@ -30,6 +30,12 @@ public class EntityDamageByEntityListener implements Listener {
             damager = (Player) event.getDamager();
         } else return;
 
+        // Players cannot do damage at spawn
+        if (damager.getLocation().getY() > 210) {
+            event.setCancelled(true);
+            return;
+        }
+
         itemInMainHand = damager.getInventory().getItemInMainHand();
 
         // Grappler cannot do damage
@@ -40,11 +46,6 @@ public class EntityDamageByEntityListener implements Listener {
                 projectile.remove();
                 event.setCancelled(true);
             }
-        }
-
-        // Players cannot do damage at spawn
-        if (damager.getLocation().getY() > 210) {
-            event.setCancelled(true);
         }
     }
 }

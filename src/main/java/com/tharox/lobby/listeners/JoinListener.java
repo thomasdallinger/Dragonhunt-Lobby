@@ -9,11 +9,13 @@ import com.tharox.lobby.movement.ElytraSwapRunnable;
 import com.tharox.lobby.scoreboard.Scoreboard;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -91,6 +93,16 @@ public class JoinListener implements Listener {
             stmt.execute(query);
             stmt.close();
         });
+
+        // Items every player should have all the time.
+        GameState.giveItem(player, new ItemStack(Material.SHIELD), ChatColor.AQUA + "Shield", 40);
+
+        GameState.giveItem(player, new ItemStack(Material.CLOCK), HexColor.YELLOW + "Profile"
+                + ChatColor.GRAY + " (Right-Click)", 6);
+        GameState.giveItem(player, new ItemStack(Material.NETHER_STAR), HexColor.YELLOW + "Purchase Kits"
+                + ChatColor.GRAY + " (Right-Click)", 7);
+        GameState.giveItem(player, new ItemStack(Material.END_CRYSTAL), HexColor.YELLOW + "Play"
+                + ChatColor.GRAY + " (Right-Click)", 8);
 
         if (returningPlayer.get()) return;
 

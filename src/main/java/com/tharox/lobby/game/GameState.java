@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameState {
-    public static final String version = "1.0.6";
+    public static final String version = "1.0.7";
     public static final String mode = "Classic";
     public static final boolean eloActive = false;
     public static final String freeKit = "Demolitionist";
