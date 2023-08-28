@@ -72,8 +72,14 @@ public class Scoreboard extends ScoreboardBuilder {
 
         setScore("Deaths: " + HexColor.YELLOW + DbValues.getKills(player, false), 5);
         setScore("Games: " + HexColor.YELLOW + DbValues.getGamesPlayed(player), 4);
-        setScore("Avg. Position: " + HexColor.YELLOW
-                + roundDecimalNumber(DbValues.getAvgPosition(player), 2), 3);
+
+        if (DbValues.getAvgPosition(player) == 0) {
+            setScore("Avg. Position: " + HexColor.YELLOW
+                    + roundDecimalNumber(DbValues.getAvgPosition(player), 2), 3);
+        } else {
+            setScore("Avg. Position: " + HexColor.YELLOW + "-", 3);
+        }
+
         setScore("Wins: " + HexColor.YELLOW + DbValues.getWins(player), 2);
 
         if (DbValues.getGamesPlayed(player) != 0) { // would be a division by 0

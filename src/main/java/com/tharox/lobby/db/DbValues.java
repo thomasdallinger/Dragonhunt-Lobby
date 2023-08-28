@@ -97,6 +97,8 @@ public class DbValues {
         final int[] amount = {0};
 
         DatabaseExecutor.executeDatabaseHandler((con) -> {
+            amount[0] = 0;
+
             String query = "SELECT AVG(position) FROM plays INNER JOIN players"
                     + "ON plays.player = players.uuid WHERE position IS NOT NULL"
                     + "AND plays.player = '" + player.getUniqueId() + "'";
