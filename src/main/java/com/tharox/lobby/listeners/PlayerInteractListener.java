@@ -147,8 +147,7 @@ public class PlayerInteractListener implements Listener {
         allowedItems.add(Material.BARREL);
         allowedItems.add(Material.SMITHING_TABLE);
         allowedItems.add(Material.RESPAWN_ANCHOR);
-        allowedItems.add(Material.CARVED_PUMPKIN);
-        allowedItems.add(Material.JACK_O_LANTERN);
+        allowedItems.add(Material.BREWING_STAND);
 
         if (e.equals(EquipmentSlot.HAND)
                 && event.getAction() == Action.RIGHT_CLICK_BLOCK) {

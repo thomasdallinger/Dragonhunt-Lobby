@@ -30,8 +30,7 @@ public class LootManager implements Listener {
     public static final List<LootItem> epic = new ArrayList<>();
     public static final List<LootItem> exotic = new ArrayList<>();
     public static final List<LootItem> mythic = new ArrayList<>();
-    public static final List<PotionEffectType> positiveEffects = new ArrayList<>();
-    public static final List<PotionEffectType> randomEffects = new ArrayList<>();
+    public static final List<PotionEffectType> effects = new ArrayList<>();
 
     public LootManager(FileConfiguration lootConfig) {
         for (String rarity : rarities) {
@@ -65,18 +64,14 @@ public class LootManager implements Listener {
             }
         }
 
-        positiveEffects.add(PotionEffectType.DAMAGE_RESISTANCE);
-        positiveEffects.add(PotionEffectType.ABSORPTION);
-        positiveEffects.add(PotionEffectType.SPEED);
-        positiveEffects.add(PotionEffectType.JUMP);
-        positiveEffects.add(PotionEffectType.REGENERATION);
-
-        randomEffects.addAll(positiveEffects);
-        randomEffects.add(PotionEffectType.POISON);
-        randomEffects.add(PotionEffectType.SLOW);
-        randomEffects.add(PotionEffectType.WEAKNESS);
-        randomEffects.add(PotionEffectType.BLINDNESS);
-        randomEffects.add(PotionEffectType.LEVITATION);
+        effects.add(PotionEffectType.DAMAGE_RESISTANCE);
+        effects.add(PotionEffectType.ABSORPTION);
+        effects.add(PotionEffectType.SPEED);
+        effects.add(PotionEffectType.JUMP);
+        effects.add(PotionEffectType.REGENERATION);
+        effects.add(PotionEffectType.SLOW);
+        effects.add(PotionEffectType.LEVITATION);
+        effects.add(PotionEffectType.POISON);
     }
 
     @EventHandler
@@ -137,21 +132,13 @@ public class LootManager implements Listener {
                 }
             }
 
-            // POSITIVE EFFECTS: Carved Pumpkin
-            if (block.getType() == Material.CARVED_PUMPKIN) {
+            // EFFECTS: Brewing Stand
+            if (block.getType() == Material.BREWING_STAND) {
                 Random rand = new Random();
                 int chance = rand.nextInt(5) + 1;
 
-                player.addPotionEffect(new PotionEffect(positiveEffects.get(chance), 200, 0));
-                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
-            }
-
-            // RANDOM EFFECTS: Jack o Lantern
-            if (block.getType() == Material.JACK_O_LANTERN) {
-                Random rand = new Random();
-                int chance = rand.nextInt(5) + 1;
-
-                player.addPotionEffect(new PotionEffect(randomEffects.get(chance), 300, 1));
+                player.addPotionEffect(new PotionEffect(effects.get(chance), 400, 0));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 400, 0));
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
             }
 
