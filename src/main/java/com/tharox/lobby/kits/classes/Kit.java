@@ -53,7 +53,8 @@ public abstract class Kit {
         if (unlocked) {
             lore = lore + HexColor.GREEN + ChatColor.BOLD + "ᴜɴʟᴏᴄᴋᴇᴅ";
         } else {
-            lore = lore + HexColor.YELLOW + ChatColor.BOLD + "ᴄᴏꜱᴛ " + cost + HexColor.YELLOW + " ⛃";
+            lore = lore + HexColor.YELLOW + ChatColor.BOLD + "ᴄᴏꜱᴛ " + cost + HexColor.YELLOW + " ⛃"
+                    + ChatColor.WHITE + " OR " + ChatColor.GOLD + ChatColor.BOLD + "Premium";
         }
 
         meta.setLore(Arrays.asList(lore.split("\n")));

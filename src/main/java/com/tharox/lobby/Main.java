@@ -133,7 +133,15 @@ public final class Main extends JavaPlugin implements PluginMessageListener {
         if (nether != null) {
             WorldBorder worldBorder = nether.getWorldBorder();
             worldBorder.setCenter(new Location(nether, 0, 0, 0));
-            worldBorder.setSize(2000);
+            worldBorder.setSize(500);
+            worldBorder.setDamageAmount(0);
+        }
+
+        World end = Bukkit.getServer().getWorld("world_the_end");
+        if (end != null) {
+            WorldBorder worldBorder = end.getWorldBorder();
+            worldBorder.setCenter(new Location(end, 0, 0, 0));
+            worldBorder.setSize(500);
             worldBorder.setDamageAmount(0);
         }
     }
