@@ -80,7 +80,7 @@ public class GameState {
                 + (GrappleListener.cooldown / 20) + ChatColor.GRAY + " seconds");
 
         ItemStack grappler = new ItemStack(Material.CROSSBOW);
-        grappler.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);
+        grappler.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
         CrossbowMeta meta = (CrossbowMeta) grappler.getItemMeta();
 
         if (meta == null) return null;
@@ -93,5 +93,23 @@ public class GameState {
         grappler.setItemMeta(meta);
 
         return grappler;
+    }
+
+    public static ItemStack createKnockbackStick() {
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GRAY + "Kick players of the map.");
+
+        ItemStack stick = new ItemStack(Material.STICK);
+        stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 5);
+        ItemMeta meta = stick.getItemMeta();
+
+        if (meta == null) return null;
+
+        meta.setDisplayName(HexColor.PURPLE.toString() + ChatColor.MAGIC + "!;"
+                + HexColor.PURPLE + " Knockback Stick " + ChatColor.MAGIC + "!;");
+        meta.setLore(lore);
+        stick.setItemMeta(meta);
+
+        return stick;
     }
 }

@@ -74,6 +74,7 @@ public class LootCommand implements CommandExecutor {
                 }
 
                 inventory.addItem(GameState.createGrappler());
+                inventory.addItem(GameState.createKnockbackStick());
                 break;
         }
 

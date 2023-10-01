@@ -119,7 +119,7 @@ public class LootManager implements Listener {
                 world.dropItemNaturally(location, randomItem.make(random));
             }
 
-            // Respawn Anchor: 1x Mythic or Grappler
+            // Respawn Anchor: 1x Mythic or Grappler or Knockback Stick
             if (block.getType() == Material.RESPAWN_ANCHOR) {
                 Random rand = new Random();
                 int chance = rand.nextInt(10) + 1;
@@ -128,7 +128,12 @@ public class LootManager implements Listener {
                     randomItem = mythic.get(random.nextInt(mythic.size()));
                     world.dropItemNaturally(location, randomItem.make(random));
                 } else {
-                    world.dropItemNaturally(location, Objects.requireNonNull(GameState.createGrappler()));
+                    chance = rand.nextInt(2) + 1;
+
+                    if (chance % 2 == 0)
+                        world.dropItemNaturally(location, Objects.requireNonNull(GameState.createGrappler()));
+                    else
+                        world.dropItemNaturally(location, Objects.requireNonNull(GameState.createKnockbackStick()));
                 }
             }
 
