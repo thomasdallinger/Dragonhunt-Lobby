@@ -193,8 +193,12 @@ public final class Main extends JavaPlugin implements PluginMessageListener {
             return;
         }
 
+        // base URL and access token of the node control service (see config.yml)
+        String baseUrl = getInstance().getConfig().getString("server-control.url", "http://localhost:5000/");
+        String accessToken = getInstance().getConfig().getString("server-control.access-token", "");
+
         try {
-            URL url = new URL("http://192.168.1.219:5000/" + action + "/" + serverID + "?accessToken=REMOVED_TOKEN");
+            URL url = new URL(baseUrl + action + "/" + serverID + "?accessToken=" + accessToken);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(false);
             connection.setInstanceFollowRedirects(false);

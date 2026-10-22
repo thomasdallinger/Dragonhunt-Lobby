@@ -1,3 +1,13 @@
+# Node control service: the lobby calls <url><start|stop>/<serverID>?accessToken=<access-token>
+# to boot or shut down a game node (MhNode<serverID>) when a queue fills up.
+server-control:
+  url: "http://localhost:5000/"
+  access-token: ""
+
+# Secret argument of /beacon <number> <key>, used by the command blocks at the hidden beacons
+# so players cannot claim beacons by typing the command. /beacon is disabled while empty.
+beacon-key: ""
+
 uncommon:
   # Weapons
   0:

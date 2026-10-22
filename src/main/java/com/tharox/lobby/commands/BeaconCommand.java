@@ -1,5 +1,6 @@
 package com.tharox.lobby.commands;
 
+import com.tharox.lobby.Main;
 import com.tharox.lobby.chat.Prefixes;
 import com.tharox.lobby.chat.HexColor;
 import com.tharox.lobby.db.DbValues;
@@ -27,7 +28,9 @@ public class BeaconCommand implements CommandExecutor {
             return false;
         }
 
-        if (!args[1].equals("REMOVED_BEACON_KEY")) {
+        // the key is only known to the command blocks placed at the hidden beacons (see config.yml)
+        String beaconKey = Main.getInstance().getConfig().getString("beacon-key", "");
+        if (beaconKey.isEmpty() || !args[1].equals(beaconKey)) {
             player.sendMessage(Prefixes.getErrorPrefix() + "You do not have permission to execute this command!");
             return false;
         }
